@@ -56,7 +56,7 @@ export interface IconProps {
 
 export interface IconSet {
   component: (props: IconProps) => Component
-  values?: Partial<VuetifyIcons>
+  aliases?: Partial<VuetifyIcons>
 }
 
 export type IconOptions = Record<string, IconSet>
@@ -70,6 +70,7 @@ export const useIcon = (props: { icon: VuetifyIcon, set: string }) => {
 
   const icon = computed(() => {
     const set = icons[props.set]
+    console.log(props.set)
 
     if (!set) {
       // TODO: Throw error?
@@ -81,8 +82,8 @@ export const useIcon = (props: { icon: VuetifyIcon, set: string }) => {
 
     let icon: VuetifyIcon = props.icon
 
-    if (typeof props.icon === 'string' && props.icon.startsWith('$') && set.values) {
-      icon = set.values[props.icon.slice(1)] ?? icon
+    if (typeof props.icon === 'string' && props.icon.startsWith('$') && set.aliases) {
+      icon = set.aliases[props.icon.slice(1)] ?? icon
     }
 
     return {

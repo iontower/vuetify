@@ -2,7 +2,7 @@
   <div>
     <v-icon @click="foo" :set="type" :size="currentSize" :disabled="disabled" :icon="icon" aria-foo="asd" />
     <div class="box">
-      <button @click="type = 'material-icons'">material icons</button>
+      <button @click="type = 'md'">material icons</button>
       <button @click="type = 'mdi'">mdi</button>
       <button @click="type = 'mdi-svg'">mdi-svg</button>
       <button @click="type = 'fa5'">fa5</button>
